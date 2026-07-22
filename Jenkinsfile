@@ -10,8 +10,8 @@ pipeline {
         stage('Test') {
             steps {
                 sh """
-                    python3 -m pip install pytest pytest-junit
                     mkdir -p test-reports
+                    python3 -m pip install pytest pytest-junit -i https://pypi.tuna.tsinghua.edu.cn/simple --break-system-packages
                     python3 -m pytest --junit-xml test-reports/results.xml sources/test_calc.py
                 """
             }
